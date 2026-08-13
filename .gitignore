@@ -1,0 +1,8 @@
+# Entornos virtuales
+.venv/
+
+# Archivos de caché de Python
+__pycache__/
+
+# Archivos específicos del sistema operativo
+.DS_Store

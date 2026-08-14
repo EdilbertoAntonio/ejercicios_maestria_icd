@@ -6,3 +6,5 @@ __pycache__/
 
 # Archivos específicos del sistema operativo
 .DS_Store
+
+.ipynb_checkpoints/

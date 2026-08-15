@@ -6,3 +6,10 @@ sympy == 1.14.0
 scipy == 1.18.0
 scikit-learn == 1.9.0
 seaborn == 0.13.2
+
+# api new york times
+pynytimes == 0.10.0
+
+# para manejo de keys en apis
+
+python-dotenv == 1.2.2

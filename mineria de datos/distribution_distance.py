@@ -1,6 +1,7 @@
 from collections import Counter
 import matplotlib.pyplot as plt
 
+# the following abstract is from the paper called "Reparameterized Complex-valued Neurons Can Efficiently Learn More than Real-valued Neurons via Gradient Descent"
 text1 = """
     We study the high-dimensional training dynamics of a shallow neural network with
     quadratic activation in a teacher–student setup. We focus on the extensive-width regime,
@@ -17,6 +18,7 @@ text1 = """
     overparameterization influences recovery.
 """
 
+# the following abstract is from the paper called "High-Dimensional Analysis of Gradient Flow for Extensive-Width Quadratic Neural Network"
 text2 = """
     Complex-valued neural networks potentially possess better representations and performance than real-valued counterparts when dealing with some complicated tasks such as
     acoustic analysis, radar image classification, etc. Despite empirical successes, it remains unknown theoretically when and to what extent complex-valued neural networks outperform
@@ -35,12 +37,17 @@ def word_dist(text):
     words = text.lower().replace(".","").split()
     counts = Counter(words)
     total = sum(counts.values())
-    distribution = {key:(value/total )for key, value in counts.items()}
+    distribution = {key:(value/total) for key, value in counts.items()}
     
     return distribution
 
 dist1 = word_dist(text1)
 dist2 = word_dist(text2)
+
+all_words = set(dist1.keys()).union(set(dist2.keys()))
+
+variational_distance = sum([abs(dist1.get(word,0)-dist2.get(word,0)) for word in all_words])*(1/2)
+print(variational_distance)
 
 plt.bar(dist1.keys(), dist1.values(), color='red')
 plt.bar(dist2.keys(), dist2.values(), color='blue')

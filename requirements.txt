@@ -13,3 +13,5 @@ pynytimes == 0.10.0
 # para manejo de keys en apis
 python-dotenv == 1.2.2
 requests == 2.34.2
+
+# ydata-profiling == 4.18.4

@@ -1,28 +1,28 @@
 x <- 8
 y <- 3
 
-if (x<y){
-    print('ejemplo')
+if (x < y) {
+  print("ejemplo")
 } else {
-    print('Ejemplo 2')
+  print("Ejemplo 2")
 }
 ## ctrl + shift + s para correr todo el archivo en VScode
 n <- 1
-while(n<=5){
-    print(paste("El contador es:", n))
-    n <- n + 1
+while (n <= 5) {
+  print(paste("El contador es:", n))
+  n <- n + 1
 }
 
 contador <- 1
 
 repeat { # se repite al menos una vez
-    print(paste("Iteración número:", contador))
+  print(paste("Iteración número:", contador))
 
-    if (contador >= 5) {
-        break  # Sale del bucle cuando el contador llega a 5
-    }
+  if (contador >= 5) {
+    break  # Sale del bucle cuando el contador llega a 5
+  }
 
-    contador <- contador + 1  # Incrementamos el valor
+  contador <- contador + 1  # Incrementamos el valor
 }
 
 

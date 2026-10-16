@@ -15,3 +15,15 @@ __pycache__/
 *.csv
 # *.jpg
 # *.png
+
+# Historiales y datos de sesión de R
+.Rhistory
+.RData
+.Ruserdata
+
+# Archivos temporales de RStudio
+.Rproj.user/
+
+# Archivos de caché
+.Rapp.history
+.RDataTmp

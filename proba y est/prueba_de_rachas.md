@@ -183,6 +183,10 @@ Por lo que el estadístico Z no sería más que una medida de distancia, para sa
 
 * Si $Z_{calc} > Z_{1-\alpha/2}$ nos indica que hay más rachas de los esperado, por lo tanto la secuencia alterna demasiado, es decir, las subsecuencias duran poco con el mismo tipo, lo que nos indica patrón ciclico.
 
+* Si $Z_{calc} < -Z_{1-\alpha/2}$ nos está diciendo que hay menos rachas de las esperadas
+
+* Si $Z_{calc} > Z_{1-\alpha/2}$ nos indica que hay más rachas de los esperado
+
 O bien mediante un valor P, debido a que es una prueba bilateral, tenemos que es $p = 2P(Z>|Z_{calc}|) = 2[1-\Phi(|Z_{calc}|)]$, por lo que si $p<\alpha$ rechazariamos a $H_0$
 
 ### Nota
@@ -192,30 +196,3 @@ Como $R$ es una variable discreta, es decir, sólo variables enteras positivas, 
 $$
 Z = \frac{R-\mu_R-0.5\times sgn(R-\mu_R)}{\sigma_R}
 $$
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

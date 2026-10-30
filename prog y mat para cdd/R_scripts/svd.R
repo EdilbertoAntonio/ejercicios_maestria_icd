@@ -62,8 +62,3 @@ data.frame(
   Varianza = var_exp,
   Acumulada = var_cum
 )
-
-
-
-
-

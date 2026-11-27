@@ -1,0 +1,96 @@
+CREATE DATABASE GusanoBarrenador CHARACTER SET utf8mb4;
+
+USE GusanoBarrenador;
+
+CREATE TABLE gusano_barrenador (
+	id_gb INT PRIMARY KEY,
+	especie VARCHAR(50) NOT NULL,
+	esperanza_vida INT NOT NULL,
+	longitud INT NOT NULL 
+)ENGINE= InnoDB;
+
+CREATE TABLE salud (
+	id_salud INT PRIMARY KEY,
+	tipo_lesion VARCHAR(50) NOT NULL,
+	region_danada VARCHAR(50) NOT NULL,
+	gravedad VARCHAR(50) NOT NULL,
+	embarazo VARCHAR(10) NOT NULL
+)ENGINE= InnoDB;
+
+CREATE TABLE animal (
+	id_animal INT PRIMARY KEY,
+	edad INT NOT NULL,
+	sexo VARCHAR(15) NOT NULL,
+	especie VARCHAR(15) NOT NULL,
+	peso INT NOT NULL,
+	id_salud INT NOT NULL,
+	FOREIGN KEY (id_salud) REFERENCES salud(id_salud)
+)ENGINE= InnoDB;
+
+CREATE TABLE lugar (
+	id_lugar INT PRIMARY KEY,
+	latitud REAL NOT NULL,
+	longitud REAL NOT NULL,
+	municipio VARCHAR(50) NOT NULL,
+	estado VARCHAR(50) NOT NULL
+)ENGINE= InnoDB;
+
+CREATE TABLE casos_infectados (
+	id_caso INT PRIMARY KEY,
+	fecha DATE NOT NULL,
+	resultado_caso VARCHAR(50) NOT NULL,
+	tratamiento INT NOT NULL,
+	id_animal INT NOT NULl,
+	id_lugar INT NOT NULl,
+	id_gb INT NOT NULL,
+	FOREIGN KEY (id_animal) REFERENCES animal(id_animal),
+	FOREIGN KEY (id_lugar) REFERENCES lugar(id_lugar),
+	FOREIGN KEY (id_gb) REFERENCES gusano_barrenador(id_gb) 
+)ENGINE= InnoDB;
+
+CREATE TABLE camapanas_prevencion (
+	id_prevencion INT PRIMARY KEY,
+	fecha DATE NOT NULL,
+	resultado INT NOT NULL,
+	revision_ganado VARCHAR(50) NOT NULL,
+	larvicida VARCHAR(50) NOT NULL,
+	control_mosca VARCHAR(50),
+	moscas_esteriles_liberadas INT,
+	id_lugar INT NOT NULL,
+	FOREIGN KEY (id_lugar) REFERENCES lugar(id_lugar)
+)ENGINE= InnoDB;
+
+CREATE TABLE registro_climatico (
+	id_registro INT PRIMARY KEY,
+	precipitacion REAL NOT NULL,
+	temperatura DECIMAL(2,2) NOT NULL,
+	humedad DECIMAL(2,2) NOT NULL,
+	frecuencia INT NOT NULL,
+	fecha DATE NOT NULL,
+	id_lugar INT NOT NULL,
+	FOREIGN KEY (id_lugar) REFERENCES lugar(id_lugar)
+)ENGINE= InnoDB;
+
+INSERT INTO gusano_barrenador (id_gb, especie, esperanza_vida, longitud)
+VALUES 
+('1', 'Cochliomyia hominivorax', '21', '15'),
+('2', 'Cochliomyia macellaria', '18', '12'),
+('3', 'Chrysomya megacephala', '20', '10'),
+('4', 'Dermatobia hominis', '25', '18'),
+('5', 'Sarcophaga carnaria', '15', '9');
+
+-- con una tabla ya creada
+LOAD DATA LOCAL INFILE 'D:/papeles maestria/ejercicios_maestria_icd/prog y mat para cdd/datos/lugar.csv'
+INTO TABLE lugar
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(id_lugar, latitud, longitud, municipio, estado);
+
+SELECT * FROM lugar;
+
+CREATE OR REPLACE VIEW gusano_macellaria AS
+SELECT * 
+FROM gusano_barrenador
+WHERE especie = 'Cochliomyia macellaria';
